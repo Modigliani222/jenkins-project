@@ -1,1 +1,1 @@
-salam ala
+salam
