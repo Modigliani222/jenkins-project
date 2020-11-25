@@ -1,13 +1,18 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('My-JenkinsBuild-Steps') {
-            steps {
-               echo "Start"
-               echo "Doing something.."
-               echo "End"
-            }
-        }
-    }
-}
+#!groovy
+// Run docker build
+ 
+ pipeline {
+     agent {
+          label 'master'
+          }
+     stages {
+         stage("create docker image") {
+             steps {
+                  echo " ============== start building image ============="
+                  dir ('images') {
+                           sh 'docker build . '
+                  }
+             }              
+         }                  
+     }
+ }   
