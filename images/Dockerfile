@@ -11,7 +11,7 @@ RUN apt-get install -y npm
 
 RUN npm install -g http-server 
 
-ADD jenkins-project/. /usr/apps/hello-docker/
+ADD /jenkins-project/blob/master/index.html /usr/apps/hello-docker/
 
 
 CMD ["http-server", "-s"]
