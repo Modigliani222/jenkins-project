@@ -11,7 +11,7 @@ RUN apt-get install -y npm
 
 RUN npm install -g http-server 
 
-COPY /index.html /usr/apps/hello-docker/
+ADD . /usr/apps/hello-docker/
 
 
 CMD ["http-server", "-s"]
