@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+MAINTAINER Zeynalov_Zaka
 
 WORKDIR /usr/apps/hello-docker
 
@@ -13,5 +14,8 @@ RUN npm install -g http-server
 
 ADD . /usr/apps/hello-docker/
 
+#Portun acislihi!
+
+EXPOSE 80
 
 CMD ["http-server", "-s"]
