@@ -16,8 +16,8 @@
   // Running Dccker container
   stage('Docker Run') {
    steps{
-      script {
-        dockerImage.run("-p 8181:8080  --rm --name mezey ucun")       
+       script {
+          dockerImage.run("-p 8181:8080  --rm --name mezey ucun")       
       }                  
    }
  }
