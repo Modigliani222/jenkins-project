@@ -10,21 +10,9 @@
              steps {
                   echo " ============== start building image ============="
                   dir ('images') {
-                           sh 'docker build . '
+                           sh 'docker build -t zekushka/V01  . '
                   }
              } 
-           }
-// Running Dccker container
-         stage('Docker Run') {
-             steps{
-               script {
-                 dockerImage.run("-p 8181:8080 --name mezey ucun")
-               }
-             }
-         }
 }
 }
-
-
-     
-         
+}              
