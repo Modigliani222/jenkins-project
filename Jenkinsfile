@@ -10,7 +10,7 @@
              steps {
                   echo " ============== start building image ============="
                   dir ('images') {
-                           sh 'docker build -t zekushka/V01  . '
+                           sh 'docker build -t zekushka/v01  . '
                   }
              } 
 }
