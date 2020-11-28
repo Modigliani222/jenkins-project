@@ -5,7 +5,7 @@
      environment {
      registry = "zeynalov/jenkins-project"
      registryCredential = 'docker-hub'
-     dockerImage = '' 
+     dockerImage = ''
      }
      agent {
           label 'master'
@@ -16,6 +16,7 @@
                   echo " ============== start building image ============="
                   dir ('images') {
                            sh 'docker build -t zekushka  . '
+                           dockerImage= zekushka
                   }
              } 
             }
@@ -25,7 +26,7 @@
 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push 
+                        dockerImage.push()
         
            
               
