@@ -5,7 +5,7 @@
      environment {
      registry = "zeynalov/jenkins-project"
      registryCredential = 'docker-hub'
-     dockerImage = ''
+     dockerImage = 'zekushka/v02'
      }
      agent {
           label 'master'
@@ -22,7 +22,7 @@
      stage('Deploy our image') {
         steps{
            script {
-              docker.withRegistry( '', registryCredential ) {
+              docker.withRegistry( 'zekushka/v02', registryCredential ) {
               dockerImage.push()
 }
 }
