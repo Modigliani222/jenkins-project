@@ -5,7 +5,7 @@
      environment {
      registry = "zeynalov/jenkins-project"
      registryCredential = 'docker-hub'
-     dockerImage = ''
+     dockerImage = zekushka
      }
      agent {
           label 'master'
@@ -16,7 +16,7 @@
                   echo " ============== start building image ============="
                   dir ('images') {
                            sh 'docker build -t zekushka  . '
-                           dockerImage= zekushka
+                           
                   }
              } 
             }
