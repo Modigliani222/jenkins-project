@@ -5,7 +5,7 @@
      environment {
      registry = "zeynalov/jenkins-project"
      registryCredential = 'docker-hub'
-     dockerImage = ' ' ' '
+     dockerImage = '' 
      }
      agent {
           label 'master'
