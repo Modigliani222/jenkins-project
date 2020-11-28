@@ -42,7 +42,7 @@
      stage("run docker image") {
         steps {   
             echo " =========== Running a docker image that we've just created"
-                    sh 'docker run  -d -p 8181:8080  zekushka'
+                    sh 'docker run  -d -p 8181:8080  latest'
  
         }
      }
