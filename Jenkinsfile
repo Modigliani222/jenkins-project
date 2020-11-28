@@ -41,8 +41,8 @@
      } 
      stage("run docker image") {
         steps { 
-           script {   
-                    dockerImage.run("-p 8181:5000 --rm --name zeynalov/jenkins-project")
+            script {   
+                    dockerImage.run("-p 8181:5000 --rm --name zeynalovContainer")
 
  
         }
