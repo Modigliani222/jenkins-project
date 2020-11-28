@@ -11,15 +11,20 @@
           label 'master'
           }
      stages {
-         stage("Buil a docker image") {
-             steps {
-                  echo " ============== start building image ============="
-                  dir ('images') {
-                           sh 'docker build -t zekushka  . '
+         stage('Cloning our Git') {
+           steps {
+             git 'https://github.com/Modigliani222/jenkins-project.git'
                            
                   }
              } 
             }
+         stage('Building our image') {
+           steps{
+            script {
+              dockerImage = docker.build registry + ":$BUILD_NUMBER"
+           }
+         }
+       }
      stage('Deploy our image') { 
 
             steps { 
