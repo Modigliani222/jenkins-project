@@ -25,7 +25,8 @@
 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push()
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
         
            
               
