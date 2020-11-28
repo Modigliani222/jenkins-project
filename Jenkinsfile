@@ -24,20 +24,20 @@
             }
     }
 
-  //    stage('Deploy our image') { 
+     stage('Deploy our image') { 
 
- //           steps { 
+           steps { 
 
-//             script { 
- //                 docker.withRegistry( '', registryCredential ) { 
-  //                     dockerImage.push()
+             script { 
+                  docker.withRegistry( '', registryCredential ) { 
+                      dockerImage.push()
         
            
               
               
- //            }
-   //        }
-     //   }
+            }
+          }
+       }
      } 
      stage("run docker image") {
         steps {   
@@ -47,4 +47,4 @@
         }
      }
   }
-//}              
+}              
