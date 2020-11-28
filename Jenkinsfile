@@ -24,7 +24,7 @@
             }
     }
 
-#     stage('Deploy our image') { 
+  //    stage('Deploy our image') { 
 
  #           steps { 
 
@@ -35,9 +35,9 @@
            
               
               
-             }
-           }
-        }
+ //            }
+   //        }
+     //   }
      } 
      stage("run docker image") {
         steps {   
