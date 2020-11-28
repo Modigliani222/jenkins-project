@@ -16,7 +16,7 @@
              script {
                   echo " ============== start building image ============="
                   dir ('images') {
-                      dockerImage = docker.build ("zekushka":${env.BUILD_ID}")
+                      dockerImage = docker.build("zekushka:${env.BUILD_ID}")
     
                            
                   }
