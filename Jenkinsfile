@@ -11,7 +11,7 @@
           label 'master'
           }
      stages {
-         stage("create docker image") {
+         stage("Buil a docker image") {
              steps {
                   echo " ============== start building image ============="
                   dir ('images') {
@@ -19,21 +19,21 @@
                   }
              } 
             }
-     stage('Deploy our image') {
+     stage('Deploy  image') {
         steps{
            script {
               docker.withRegistry( '', registryCredential ) {
               dockerImage.push()
-}
-}
-}
-}
-     stage("run docke image") {
+             }
+           }
+        }
+     } 
+     stage("run docker image") {
         steps {   
             echo " =========== Running a docker image that we've just created"
                     sh 'docker run  -d -p 8181:8080  zekushka/v02'
  
-}
-}
-}
+        }
+     }
+  }
 }              
