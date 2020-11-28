@@ -5,26 +5,24 @@
      environment {
      registry = "zeynalov/jenkins-project"
      registryCredential = 'docker-hub'
-     dockerImage = 'zekushka'
+     dockerImage = ''
      }
      agent {
           label 'master'
           }
      stages {
-         stage('Cloning our Git') {
-           steps {
-             git 'https://github.com/Modigliani222/jenkins-project.git'
+         stage("Buil a docker image") {
+             steps {
+             script {
+                  echo " ============== start building image ============="
+                  dir ('images') {
+                      dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    
                            
                   }
              } 
             }
-         stage('Building our image') {
-           steps{
-            script {
-              dockerImage = docker.build registry + ":$BUILD_NUMBER"
-           }
-         }
-       }
+    }
      stage('Deploy our image') { 
 
             steps { 
@@ -47,4 +45,5 @@
  
         }
      }
-  }            
+  }
+}              
