@@ -16,7 +16,7 @@
              script {
                   echo " ============== start building image ============="
                   dir ('images') {
-                      dockerImage = docker.build("zekushka")
+                      dockerImage = docker.build registry("zekushka")
     
                            
                   }
