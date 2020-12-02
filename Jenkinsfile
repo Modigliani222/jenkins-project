@@ -1,6 +1,6 @@
 #!groovy
 // Run docker build
- 
+      def buildNumber = BUILD_NUMBER
  pipeline {
      environment {
      registry = "zeynalov/jenkins-project"
@@ -16,7 +16,7 @@
              script {
                   echo " ============== start building image ============="
                   dir ('images') {
-                      dockerImage = docker.build registry 
+                      dockerImage = docker.build registry + ":$buildNumber" 
     
                            
                   }
@@ -46,7 +46,7 @@
          sshagent(['Docker-Dev-Server']) {
              sh "ssh -o StrictHostKeyChecking=no ssd@192.168.1.237 docker rm -f zeynalovcontainer || true "
             
-             sh "ssh -o StrictHostKeyChecking=no ssd@192.168.1.237 docker run -d -p 8181:8080 --name zeynalovcontainer zeynalov/jenkins-project:latest"
+             sh "ssh -o StrictHostKeyChecking=no ssd@192.168.1.237 docker run -d -p 8181:8080 --name zeynalovcontainer zeynalov/jenkins-project:${builNumber}"
          }
  }
         
