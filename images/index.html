@@ -5,6 +5,7 @@
 <h2><font color=black> This is a simple Jenkins pipeline</font></h2>
 </center> <br>
 <h2><font color=red>Jenkinsfile  </font></h2>
+<b>
 #!groovy
 // Run docker build  <br>
       def buildNumber = BUILD_NUMBER <br>
@@ -60,6 +61,6 @@ ADD . /usr/apps/hello-docker/<br><br>
 EXPOSE 8080<br><br>
 CMD ["http-server", "-s"]<br><br>
 
-
+</b>
 </body>
   </html>
