@@ -24,7 +24,7 @@
             }
     }
 
-     stage('Deploy our image') { 
+     stage('Push to the DockerHub') { 
 
            steps { 
 
