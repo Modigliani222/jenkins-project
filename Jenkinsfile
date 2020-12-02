@@ -46,7 +46,7 @@
          sshagent(['Ubuntu-EC2-PEM-KEY']) {
              sh "ssh -o StrictHostKeyChecking=no ubuntu@3.101.104.59 docker rm -f zeynalovcontainer || true "
             
-             sh "ssh -o StrictHostKeyChecking=no ubuntu@3.101.104.59  docker run -d -p 8181:8080 --name zeynalovcontainer zeynalov/jenkins-project:${buildNumber}"
+             sh "ssh -o StrictHostKeyChecking=no ubuntu@3.101.104.59  docker run -d -p 8080:8080 --name zeynalovcontainer zeynalov/jenkins-project:${buildNumber}"
          }
  }
         
