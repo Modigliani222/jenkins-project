@@ -1,12 +1,65 @@
-<html>
-<body bgcolor=orange>
+
+dy bgcolor=orange>
 <body bgcolor=yellow>
 <center>
-<h2><font color=black> Igidler yeni ili NY da!!!</font></h2>
-<h2><font color=red> You have uplodaed the image to the Docker hub! Alinsa yaxshi index fayli yigacam! </font></h2>
-Jenkinsin training  <br>
-V:03 <br>
-<h1><font color=red>zekus.com</font></h1> 
-</center>
+<h2><font color=black> This is a simple Jenkins pipeline</font></h2>
+</center> <br>
+<h2><font color=red>Jenkinsfile  </font></h2>
+#!groovy
+// Run docker build  <br>
+      def buildNumber = BUILD_NUMBER <br>
+ pipeline { <br>
+     environment { <br>
+     registry = "zeynalov/jenkins-project" <br>
+     registryCredential = 'docker-hub' <br>
+     dockerImage = '' <br>
+     } <br> 
+     agent { <br>
+          label 'master' <br>
+          } <br>
+     stages { <br>
+         stage("Buil a docker image") { <br>
+             steps { <br>
+             script { <br>
+                  echo " ============== start building image =============" <br>
+                  dir ('images') { <br>
+                      dockerImage = docker.build registry + ":$buildNumber" <br>
+                  } <br>
+             } <br>
+            } <br>
+    }<br>
+     stage('Push to the DockerHub') { <br>
+           steps { <br>
+             script { <br>
+                  docker.withRegistry( '', registryCredential ) { <br>
+                      dockerImage.push() <br>
+            } <br>
+          } <br>
+       } <br>
+     } <br>
+     stage("Pull and Run a Docker image on the deployment server") { <br>
+       steps { <br>
+         sshagent(['Ubuntu-EC2-PEM-KEY']) { <br>
+             sh "ssh -o StrictHostKeyChecking=no ubuntu@3.101.104.59 docker rm -f zeynalovcontainer || true " <br>
+             sh "ssh -o StrictHostKeyChecking=no ubuntu@3.101.104.59  docker run -d -p 8080:8080 --name zeynalovcontainer zeynalov/jenkins-project:${buildNumber}" <br>
+         }<br>
+ }<br>
+        } <br>
+     }<br>
+  }<br>
+<h2><font color=green>Dockerfile  </font></h2>
+FROM ubuntu:latest <br><br>
+MAINTAINER Zeynalov_Zaka <br><br>
+ WORKDIR /usr/apps/hello-docker <br><br>
+RUN apt-get -y update<br><br>
+RUN apt-get install -y nodejs<br><br>
+RUN apt-get install -y npm<br><br>
+RUN npm install -g http-server<br><br>
+ADD . /usr/apps/hello-docker/<br><br>
+# open port >><br><br>
+EXPOSE 8080<br><br>
+CMD ["http-server", "-s"]<br><br>
+
+
 </body>
-</html>
+  </html>
