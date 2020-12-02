@@ -40,7 +40,7 @@
        }
      } 
       
-     stage("Deploy  docker image in Docker Deployment Server") {
+     stage("Pull and Run a Docker image on the deployment server") {
          
        steps {
          sshagent(['Docker-Dev-Server']) {
